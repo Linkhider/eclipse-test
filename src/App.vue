@@ -10,6 +10,7 @@
 #app{
   //padding-bottom: 20px;
   min-height: 100vh;
+  padding-bottom: 20px;
 }
 *{
   font-family: 'Open Sans', sans-serif;

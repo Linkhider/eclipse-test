@@ -4,7 +4,7 @@
     <div class="container" v-else>
       <nav>
         <div class="nav-wrapper blue lighten-3">
-          <form @search.enter.prevent="searchHandler">
+          <form @search.prevent="searchHandler">
             <div class="input-field">
               <input id="search" type="search" v-model="search" required>
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -13,7 +13,7 @@
           </form>
         </div>
       </nav>
-      <div class="card " v-for="cur in filteredList" :key="cur.id">
+      <div class="card" v-for="cur in filteredList" :key="cur.id">
         <div class="card__name">{{ cur.Name }}</div>
         <div class="card__items">
           <div class="card__items-nominal">1 {{ cur.CharCode }}</div>
@@ -50,13 +50,11 @@ export default {
   },
   methods: {
     searchHandler() {
-      console.log(this.search)
+
     }
   },
   async mounted() {
     this.currency = await this.$store.dispatch('fetchCurrency')
-    console.log(this.currency.Valute)
-    //console.log(Object.values(this.currency.Valute).filter(currency => currency.ID == "R01035"));
     this.loading = false
   },
   computed: {
