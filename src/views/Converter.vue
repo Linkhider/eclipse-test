@@ -13,7 +13,7 @@
           <option value=null disabled selected>Выберите валюту</option>
           <option v-for="cur in currency.Valute" :key="cur.id" :value="cur">{{ cur.CharCode }}</option>
         </select>
-        <input @change="changeValues" type="number" v-model="firstValue">
+        <input @input="changeValues" type="number" v-model="firstValue">
       </div>
 
         <button @click="Flip(); changeValues()" class="btn-floating btn-large waves-effect waves-light blue lighten-1"><i class="material-icons">compare_arrows</i></button>
