@@ -3,7 +3,7 @@
     <Loader v-if="loading"/>
     <div class="container" v-else>
       <div class="card">
-        <label v-if="firstSelected">{{firstSelected.Name}}</label>
+        <label v-if="firstSelected">{{ firstSelected.Name }}</label>
         <label v-else>Валюта не выбрана</label>
         <select
             class="browser-default"
@@ -16,10 +16,11 @@
         <input @input="changeValues" type="number" v-model="firstValue">
       </div>
 
-        <button @click="Flip(); changeValues()" class="btn-floating btn-large waves-effect waves-light blue lighten-1"><i class="material-icons">compare_arrows</i></button>
+      <button @click="Flip(); changeValues()" class="btn-floating btn-large waves-effect waves-light blue lighten-1"><i
+          class="material-icons">compare_arrows</i></button>
 
       <div class="card">
-        <label v-if="secondSelected">{{secondSelected.Name}}</label>
+        <label v-if="secondSelected">{{ secondSelected.Name }}</label>
         <label v-else>Валюта не выбрана</label>
         <select
             class="browser-default"
@@ -31,7 +32,7 @@
         </select>
         <input type="number" v-model="secondValue" disabled>
       </div>
-<!--      1 USD = 2val/1val-->
+      <!--      1 USD = 2val/1val-->
 
 
     </div>
@@ -50,9 +51,7 @@ export default {
     firstValue: 1,
     secondValue: null
   }),
-  components: {
-
-  },
+  components: {},
   methods: {
     changeValues() {
       if (this.firstSelected && this.secondSelected) {
@@ -63,31 +62,32 @@ export default {
       [this.firstSelected, this.secondSelected] = [this.secondSelected, this.firstSelected]
 
     },
-
   },
   async mounted() {
     this.currency = await this.$store.dispatch('fetchCurrency')
+    this.$route.params.cur ? this.firstSelected = this.$route.params.cur : this.firstSelected = null
     this.loading = false
   },
-  computed: {
-
-  }
+  computed: {}
 }
 </script>
 <style lang="scss" scoped>
-.container{
+.container {
   padding-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  .card{
+
+  .card {
     width: 40%;
     padding: 10px;
-    label{
+
+    label {
       font-size: 14px;
     }
   }
-  button{
+
+  button {
     margin: 0 20px;
   }
 }

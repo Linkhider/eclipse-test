@@ -7,12 +7,12 @@
             <div class="input-field">
               <input id="search" type="search" v-model="search" required>
               <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
+              <i @click="search=''" class="material-icons">close</i>
             </div>
         </div>
       </nav>
       <button @click="rub = !rub" class="waves-effect waves-light btn"><i class="material-icons">compare_arrows</i></button>
-      <div class="card" v-for="cur in filteredList" :key="cur.id">
+      <router-link tag="div" :to="{name: 'Converter', params: { cur: cur }}" class="card" v-for="cur in filteredList" :key="cur.id">
         <div class="card__name">{{ cur.Name }}</div>
         <div class="card__items">
 
@@ -37,7 +37,7 @@
             {{ Math.abs(cur.Value - cur.Previous).toFixed(4)}}
           </div>
         </div>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -74,6 +74,7 @@ button{
   margin: 10px 0;
 }
   .card{
+    cursor: pointer;
     padding: 10px;
     &__name{
       margin-bottom: 5px;

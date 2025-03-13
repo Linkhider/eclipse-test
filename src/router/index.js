@@ -16,7 +16,8 @@ export default new Router({
     {
       path: '/converter',
       name: 'Converter',
-      component: () => import('../views/Converter')
+      component: () => import('../views/Converter'),
+      params: true
     }
   ]
 })
